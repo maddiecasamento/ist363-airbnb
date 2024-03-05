@@ -119,12 +119,15 @@ closeBtn.addEventListener("click", function() {
 const displayCategory = (category, properties) => {
     // console.log({category});
     const sectionElement = document.createElement('section');
-    sectionElement.classList.add('category');
+    sectionElement.classList.add('category')
+    
+    const containerDiv = document.createElement('div')
+    containerDiv.classList.add('container')
 
     const sectionTitle = document.createElement('h2');
     sectionTitle.textContent = category.label.plural;
 
-    sectionElement.appendChild(sectionTitle);
+    containerDiv.appendChild(sectionTitle);
 
     //console.log(category.label.singular);
     // 1. filter properties
@@ -156,7 +159,7 @@ const displayCategory = (category, properties) => {
 
         articleElement.innerHTML = propertyHtml;
 
-        sectionElement.appendChild(articleElement);
+        containerDiv.appendChild(articleElement);
 
 
     }); // end of forEach
@@ -165,8 +168,8 @@ const displayCategory = (category, properties) => {
 
     // 2. loop and append properties
     
-
-    content.appendChild(sectionElement);
+    sectionElement.appendChild(containerDiv)
+    contentDiv.appendChild(sectionElement)
 } // end of the displayCategory
 
 Promise.all([
