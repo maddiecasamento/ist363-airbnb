@@ -119,15 +119,18 @@ closeBtn.addEventListener("click", function() {
 const displayCategory = (category, properties) => {
     // console.log({category});
     const sectionElement = document.createElement('section');
-    sectionElement.classList.add('category')
+    sectionElement.classList.add('slider')
     
     const containerDiv = document.createElement('div')
-    containerDiv.classList.add('container')
+    containerDiv.classList.add('slider__container')
 
-    const sectionTitle = document.createElement('h2');
-    sectionTitle.textContent = category.label.plural;
+    const sliderGrid = document.createElement('div')
+    sliderGrid.classList.add('slider__grid')
 
-    containerDiv.appendChild(sectionTitle);
+    // const sectionTitle = document.createElement('h2');
+    // sectionTitle.textContent = category.label.plural;
+
+    // containerDiv.appendChild(sectionTitle);
 
     //console.log(category.label.singular);
     // 1. filter properties
@@ -149,7 +152,7 @@ const displayCategory = (category, properties) => {
     //console.log({filteredProperties});
     filteredProperties.forEach(property => {
         const articleElement = document.createElement('article');
-        articleElement.classList.add('property');
+        articleElement.classList.add('slider__item');
 
         let propertyHtml = `
         <h3 class="property--title">${property.name}</h3>
@@ -159,7 +162,7 @@ const displayCategory = (category, properties) => {
 
         articleElement.innerHTML = propertyHtml;
 
-        containerDiv.appendChild(articleElement);
+        sliderGrid.appendChild(articleElement);
 
 
     }); // end of forEach
@@ -167,7 +170,7 @@ const displayCategory = (category, properties) => {
     
 
     // 2. loop and append properties
-    
+    containerDiv.appendChild(sliderGrid)
     sectionElement.appendChild(containerDiv)
     contentDiv.appendChild(sectionElement)
 } // end of the displayCategory
